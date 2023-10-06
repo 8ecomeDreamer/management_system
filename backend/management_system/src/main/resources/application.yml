@@ -1,0 +1,16 @@
+server:
+  port: 8888
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/common_db
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+#    table-prefix配置前缀 防止实体类与数据库对应不上
+#  map-underscore-to-camel-case 关闭驼峰到下划线的变化
+mybatis-plus:
+  global-config:
+    db-config:
+      table-prefix: common_
+  configuration:
+    map-underscore-to-camel-case: false
