@@ -1,2 +1,2 @@
 # management_system
-通用管理系统
+通用后台管理系统
