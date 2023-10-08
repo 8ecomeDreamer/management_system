@@ -6,8 +6,8 @@ import React from 'react';
 const Footer: React.FC = () => {
   const intl = useIntl();
   const defaultMessage = intl.formatMessage({
-    id: 'app.copyright.produced',
-    defaultMessage: '蚂蚁集团体验技术部出品',
+    id: '支持一下码外生活吧',
+    defaultMessage: '码外生活作品',
   });
 
   const currentYear = new Date().getFullYear();
@@ -20,21 +20,21 @@ const Footer: React.FC = () => {
       copyright={`${currentYear} ${defaultMessage}`}
       links={[
         {
-          key: 'Ant Design Pro',
-          title: 'Ant Design Pro',
+          key: 'code',
+          title: '生活不易，点个小赞吧',
           href: 'https://pro.ant.design',
           blankTarget: true,
         },
         {
-          key: 'github',
+          key: 'GithubOutlined',
           title: <GithubOutlined />,
-          href: 'https://github.com/ant-design/ant-design-pro',
+          href: 'https://github.com/8ecomeDreamer/management_system',
           blankTarget: true,
         },
         {
-          key: 'Ant Design',
-          title: 'Ant Design',
-          href: 'https://ant.design',
+          key: 'coderWorld',
+          title: '码外生活',
+          href: 'https://github.com/8ecomeDreamer/management_system',
           blankTarget: true,
         },
       ]}

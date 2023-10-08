@@ -22,29 +22,29 @@ import Settings from '../../../../config/defaultSettings';
 import React, { useState } from 'react';
 import { flushSync } from 'react-dom';
 
-const ActionIcons = () => {
-  const langClassName = useEmotionCss(({ token }) => {
-    return {
-      marginLeft: '8px',
-      color: 'rgba(0, 0, 0, 0.2)',
-      fontSize: '24px',
-      verticalAlign: 'middle',
-      cursor: 'pointer',
-      transition: 'color 0.3s',
-      '&:hover': {
-        color: token.colorPrimaryActive,
-      },
-    };
-  });
-
-  return (
-    <>
-      <AlipayCircleOutlined key="AlipayCircleOutlined" className={langClassName} />
-      <TaobaoCircleOutlined key="TaobaoCircleOutlined" className={langClassName} />
-      <WeiboCircleOutlined key="WeiboCircleOutlined" className={langClassName} />
-    </>
-  );
-};
+// const ActionIcons = () => {
+//   const langClassName = useEmotionCss(({ token }) => {
+//     return {
+//       marginLeft: '8px',
+//       color: 'rgba(0, 0, 0, 0.2)',
+//       fontSize: '24px',
+//       verticalAlign: 'middle',
+//       cursor: 'pointer',
+//       transition: 'color 0.3s',
+//       '&:hover': {
+//         color: token.colorPrimaryActive,
+//       },
+//     };
+//   });
+//
+//   return (
+//     <>
+//       <AlipayCircleOutlined key="AlipayCircleOutlined" className={langClassName} />
+//       <TaobaoCircleOutlined key="TaobaoCircleOutlined" className={langClassName} />
+//       <WeiboCircleOutlined key="WeiboCircleOutlined" className={langClassName} />
+//     </>
+//   );
+// };
 
 const Lang = () => {
   const langClassName = useEmotionCss(({ token }) => {
@@ -125,6 +125,7 @@ const Login: React.FC = () => {
         });
         message.success(defaultLoginSuccessMessage);
         await fetchUserInfo();
+        await fetchUserInfo();
         const urlParams = new URL(window.location.href).searchParams;
         history.push(urlParams.get('redirect') || '/');
         return;
@@ -167,18 +168,18 @@ const Login: React.FC = () => {
             maxWidth: '75vw',
           }}
           logo={<img alt="logo" src="/logo.svg" />}
-          title="Ant Design"
+          title="通用后台管理系统"
           subTitle={intl.formatMessage({ id: 'pages.layouts.userLayout.title' })}
           initialValues={{
             autoLogin: true,
           }}
           actions={[
-            <FormattedMessage
-              key="loginWith"
-              id="pages.login.loginWith"
-              defaultMessage="其他登录方式"
-            />,
-            <ActionIcons key="icons" />,
+            // <FormattedMessage
+            //   key="loginWith"
+            //   id="pages.login.loginWith"
+            //   defaultMessage="其他登录方式"
+            // />,
+            // <ActionIcons key="icons" />,
           ]}
           onFinish={async (values) => {
             await handleSubmit(values as API.LoginParams);
@@ -196,13 +197,13 @@ const Login: React.FC = () => {
                   defaultMessage: '账户密码登录',
                 }),
               },
-              {
-                key: 'mobile',
-                label: intl.formatMessage({
-                  id: 'pages.login.phoneLogin.tab',
-                  defaultMessage: '手机号登录',
-                }),
-              },
+              // {
+              //   key: 'mobile',
+              //   label: intl.formatMessage({
+              //     id: 'pages.login.phoneLogin.tab',
+              //     defaultMessage: '手机号登录',
+              //   }),
+              // },
             ]}
           />
 
