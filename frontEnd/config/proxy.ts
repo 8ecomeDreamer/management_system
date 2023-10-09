@@ -1,3 +1,5 @@
+import antDesignPro from "@/services/ant-design-pro";
+
 /**
  * @name 代理的配置
  * @see 在生产环境 代理是无法生效的，所以这里没有生产环境的配置
@@ -30,6 +32,12 @@ export default {
     // localhost:8000/api/** -> https://preview.pro.ant.design/api/**
     '/api/': {
       target: 'https://proapi.azurewebsites.net',
+      changeOrigin: true,
+      pathRewrite: { '^': '' },
+    },
+    // 当没有关闭mock时，antDesignPro默认mock的优先级最高
+    '/mansys_api/': {
+      target: 'http://localhost:8888',
       changeOrigin: true,
       pathRewrite: { '^': '' },
     },
