@@ -33,7 +33,7 @@ export default {
     '/api': {
       target: 'https://github.com/chimurai/http-proxy-middleware',
       changeOrigin: true,
-      // pathRewrite: { '^\/api': '' },
+      // pathRewrite: { '^/api': '' },
     },
   },
   pre: {

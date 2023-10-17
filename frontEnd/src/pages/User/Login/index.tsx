@@ -85,7 +85,7 @@ const LoginMessage: React.FC<{
 
 const Login: React.FC = () => {
   const [userLoginState, setUserLoginState] = useState<API.LoginResult>({});
-  const [type, setType] = useState<string>('account');
+  const [type, setType] = useState<string>('accountLogin');
   const { initialState, setInitialState } = useModel('@@initialState');
 
   const containerClassName = useEmotionCss(() => {
@@ -143,6 +143,7 @@ const Login: React.FC = () => {
     }
   };
   const { status, type: loginType } = userLoginState;
+  // console.log(type)
 
   return (
     <div className={containerClassName}>
@@ -191,10 +192,17 @@ const Login: React.FC = () => {
             centered
             items={[
               {
-                key: 'account',
+                key: 'accountLogin',
                 label: intl.formatMessage({
                   id: 'pages.login.accountLogin.tab',
-                  defaultMessage: '账户密码登录',
+                  defaultMessage: '用户登录',
+                }),
+              },
+              {
+                key: 'accountRegister',
+                label: intl.formatMessage({
+                  id: 'pages.register.accountRegister.tab',
+                  defaultMessage: '用户注册',
                 }),
               },
               // {
@@ -215,7 +223,7 @@ const Login: React.FC = () => {
               })}
             />
           )}
-          {type === 'account' && (
+          {type === 'accountLogin' && (
             <>
               <ProFormText
                 name="username"
@@ -256,6 +264,76 @@ const Login: React.FC = () => {
                       <FormattedMessage
                         id="pages.login.password.required"
                         defaultMessage="请输入密码！"
+                      />
+                    ),
+                  },
+                ]}
+              />
+            </>
+          )}
+          {type === 'accountRegister' && (
+            <>
+              <ProFormText
+                name="registerUsername"
+                fieldProps={{
+                  size: 'large',
+                  prefix: <UserOutlined />,
+                }}
+                placeholder={intl.formatMessage({
+                  id: 'pages.register.username.placeholder',
+                  defaultMessage: '请输入注册的用户名，格式为xxx',
+                })}
+                rules={[
+                  {
+                    required: true,
+                    message: (
+                      <FormattedMessage
+                        id="pages.register.username.required"
+                        defaultMessage="请输入用户名!"
+                      />
+                    ),
+                  },
+                ]}
+              />
+              <ProFormText.Password
+                name="registerPassword"
+                fieldProps={{
+                  size: 'large',
+                  prefix: <LockOutlined />,
+                }}
+                placeholder={intl.formatMessage({
+                  id: 'pages.register.password.placeholder',
+                  defaultMessage: '请输入密码',
+                })}
+                rules={[
+                  {
+                    required: true,
+                    message: (
+                      <FormattedMessage
+                        id="pages.register.password.required"
+                        defaultMessage="请输入密码！"
+                      />
+                    ),
+                  },
+                ]}
+              />
+              <ProFormText.Password
+                name="checkedPassword"
+                fieldProps={{
+                  size: 'large',
+                  prefix: <LockOutlined />,
+                }}
+                placeholder={intl.formatMessage({
+                  id: 'pages.register.checkedPassword.placeholder',
+                  defaultMessage: '请再次输入密码',
+                })}
+                rules={[
+                  {
+                    required: true,
+                    message: (
+                      <FormattedMessage
+                        id="pages.register.checkedPassword.required"
+                        defaultMessage="两次密码输入有误！"
                       />
                     ),
                   },
@@ -346,22 +424,22 @@ const Login: React.FC = () => {
               />
             </>
           )}
-          <div
-            style={{
-              marginBottom: 24,
-            }}
-          >
-            <ProFormCheckbox noStyle name="autoLogin">
-              <FormattedMessage id="pages.login.rememberMe" defaultMessage="自动登录" />
-            </ProFormCheckbox>
-            <a
-              style={{
-                float: 'right',
-              }}
-            >
-              <FormattedMessage id="pages.login.forgotPassword" defaultMessage="忘记密码" />
-            </a>
-          </div>
+          {/*<div*/}
+          {/*  style={{*/}
+          {/*    marginBottom: 24,*/}
+          {/*  }}*/}
+          {/*>*/}
+          {/*  <ProFormCheckbox noStyle name="autoLogin">*/}
+          {/*    <FormattedMessage id="pages.login.rememberMe" defaultMessage="自动登录" />*/}
+          {/*  </ProFormCheckbox>*/}
+          {/*  <a*/}
+          {/*    style={{*/}
+          {/*      float: 'right',*/}
+          {/*    }}*/}
+          {/*  >*/}
+          {/*    <FormattedMessage id="pages.login.forgotPassword" defaultMessage="忘记密码" />*/}
+          {/*  </a>*/}
+          {/*</div>*/}
         </LoginForm>
       </div>
       <Footer />
